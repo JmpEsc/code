@@ -1,0 +1,7 @@
+aslr/
+getSmashed
+getSmashed.clean
+patFind.py
+pat.py
+script1.py
+vulnserver
