@@ -10,16 +10,16 @@ def extract_file(protected_zipfile, password):
         pass
 
 def main():
-    parser = argparse.ArgumentParser("-f <zipfile> -d <dictionary file>")
-    parser.add_argument("-f", dest='zipname', help='specify zip file')
-    parser.add_argument("-d", dest='dictname', help='specify dictionary file')
+    parser = argparse.ArgumentParser()
+    parser.add_argument("filename", help='specify zip file')
+    parser.add_argument("dictionary", help='specify dictionary file')
     args = parser.parse_args()
-    if (args.zipname == None) | (args.dictname == None):
+    if (args.filename == None) | (args.dictionary == None):
         print("-h for help")
         exit(0)
     else:
-        zipname = args.zipname
-        dictname = args.dictname
+        zipname = args.filename
+        dictname = args.dictionary
     protected_zipfile = zipfile.ZipFile(zipname)
     password_file = open(dictname)
     for line in password_file.readlines():
