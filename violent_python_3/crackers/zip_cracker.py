@@ -14,12 +14,8 @@ def main():
     parser.add_argument("filename", help='specify zip file')
     parser.add_argument("dictionary", help='specify dictionary file')
     args = parser.parse_args()
-    if (args.filename == None) | (args.dictionary == None):
-        print("-h for help")
-        exit(0)
-    else:
-        zipname = args.filename
-        dictname = args.dictionary
+    zipname = args.filename
+    dictname = args.dictionary
     protected_zipfile = zipfile.ZipFile(zipname)
     password_file = open(dictname)
     for line in password_file.readlines():
