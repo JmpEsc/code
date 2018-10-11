@@ -11,15 +11,15 @@ def conn_scan(host, port):
     try:
         conn_socket = socket(AF_INET, SOCK_STREAM)
         conn_socket.connect((host, port))
-        conn_socket.send('jmpesc\r\n')
-        results = conn_socket.recv(100)
+        #conn_socket.send('jmpesc\r\n')
+        #results = conn_socket.recv(100)
         stdout_lock.acquire()
         print('%d TCP open' % port)
-        print(str(results))
+        #print(str(results))
         conn_socket.close()
     except:
         stdout_lock.acquire()
-        print('%d TCP closed' % port)
+        #print('%d TCP closed' % port)
     finally:
         stdout_lock.release()
 
@@ -31,9 +31,9 @@ def port_scan(host, port_range):
         return
     try:
         target_name = gethostbyaddr(target_ip)
-        print('Scan results for: ' + target_name[0])
+        print('Scan results for ' + target_name[0] + ':')
     except:
-        print('Scan results for: ' + target_ip)
+        print('Scan results for ' + target_ip + ':')
     setdefaulttimeout(1)
     for port in port_range:
         t = Thread(target=conn_scan, args=(host, int(port)))
